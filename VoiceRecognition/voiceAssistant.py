@@ -82,7 +82,7 @@ def useMic(line):
 # Configurar voz
 engine = tts.init()
 voices = engine.getProperty('voices') # Información sobre la voz de un sintetizador de voz
-engine.setProperty('voice', voices[2].id) # Cambiar voz
+#engine.setProperty('voice', voices[2].id) # Cambiar voz
 r = sr.Recognizer() # Iniciar reconocimiento
 
 intro = 0 # para confirmar al usuario el inicio del programa
@@ -104,13 +104,13 @@ with sr.Microphone(device_index=1) as source:
                 try:
                     text = audioToText(audio)
                     print("Dijiste: {}".format(text))
-                    if text == "crear texto":
+                    if "crear texto" in text:
                         createFile()
-                    elif text == "leer texto":
+                    elif "leer texto" in text:
                         readFile()
-                    elif text == "abrir navegador":
+                    elif "abrir navegador" in text:
                         openBrowser()
-                    elif text == "detente":
+                    elif "detente" in text:
                         speak('Adios...')
                         break
                     else:
